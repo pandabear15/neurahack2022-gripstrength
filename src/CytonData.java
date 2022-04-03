@@ -16,6 +16,14 @@ public class CytonData {
     }
 
     /**
+     * Constructs an empty instant of the CytonData class
+     */
+    public CytonData() {
+        this.data = null;
+        this.seconds = 0.0;
+    }
+
+    /**
      * Gets the data from a Cyton session
      * @return double[] representing data from session
      */

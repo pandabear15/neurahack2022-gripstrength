@@ -23,6 +23,15 @@ public class BrainFlowMain extends Thread {
     public void run(){
         while(true){
             // update programState logic code here
+            try {
+                Cyton cyton = new Cyton();
+                CytonData data = cyton.streamData(30);
+                cyton.releaseSession();
+                this.programState.setCurrentReading(data);
+                System.out.println(Arrays.toString(data.getData())); // TODO remove this statement
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
     }
 }

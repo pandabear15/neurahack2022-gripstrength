@@ -1,7 +1,7 @@
 public class ProgramState {
 
     private boolean scanStart;
-    private double currentReading = -1;
+    private CytonData currentReading = new CytonData();
 
     private static double THRESHOLD; //declare this
 
@@ -17,15 +17,15 @@ public class ProgramState {
         scanStart = true;
     }
 
-    private double getCurrentReading(){
+    private CytonData getCurrentReading(){
         return currentReading;
     }
 
-    private boolean meetsThreshold(){
-        return currentReading >= ProgramState.THRESHOLD;
-    }
+//    private boolean meetsThreshold(){
+//        return currentReading >= ProgramState.THRESHOLD;
+//    }
 
-    private void setCurrentReading(double reading){
+    public void setCurrentReading(CytonData reading){
         currentReading = reading;
     }
 }
