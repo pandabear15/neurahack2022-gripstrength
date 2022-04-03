@@ -1,12 +1,15 @@
 import brainflow.*;
 
+/**
+ * Contains methods to interface with the OpenBCI Cyton board
+ */
 public class Cyton {
-    // object representing the OpenBCI Cyton board
+    // object representing the Cyton board
     private BoardShim board_shim;
 
     /**
      * Creates a new instance of Cyton class and:
-     *  - configures the board's hardware to only channel 1 on with SRB2 off
+     *  - configures the board's hardware to only channel 1 on with SRB2 off (reference: https://docs.openbci.com/Cyton/CytonSDK/)
      *  - opens COM4 port
      * @throws Exception
      */
@@ -29,20 +32,21 @@ public class Cyton {
         int ms = seconds * 1000;
 
         // start stream
-         board_shim.start_stream (); // use this for default options
-//        this.board_shim.start_stream(450000, "file://file_stream.csv:w");
+        board_shim.start_stream (); // use this for default options
         BoardShim.log_message(LogLevels.LEVEL_INFO.get_code(), "Start sleeping in the main thread");
         Thread.sleep(ms);
         this.board_shim.stop_stream();
 
-        // print data
-        double[][] data = this.board_shim.get_board_data(); // get all data and flush from ring buffer
-        double[] channelOne = data[1];
-
-        CytonData cd = new CytonData(channelOne, seconds);
+        // gather data
+        double[] channelData = this.board_shim.get_board_data()[1]; // get all data and flush from ring buffer
+        CytonData cd = new CytonData(channelData, seconds);
         return cd;
     }
 
+    /**
+     * Ends Cyton session
+     * @throws Exception
+     */
     public void releaseSession() throws Exception {
         this.board_shim.release_session();
     }
