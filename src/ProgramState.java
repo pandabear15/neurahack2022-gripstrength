@@ -1,7 +1,6 @@
 public class ProgramState {
 
     private boolean scanStart;
-
     private double currentReading = -1;
 
     private static double THRESHOLD; //declare this

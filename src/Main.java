@@ -14,12 +14,5 @@ public class Main {
 
         }
         System.out.println("Press detected");
-
-
-        try {
-            BrainFlowGetData.getData();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
     }
 }
