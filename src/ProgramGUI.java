@@ -10,13 +10,15 @@ public class ProgramGUI {
     private JLabel status;
     private JButton pressButton;
 
+    private ProgramState ps;
     boolean status_on = false;
 
     private final String soundName = "sfx.wav";
     private AudioInputStream audioIS;
     private Clip c = null;
 
-    public ProgramGUI() {
+    public ProgramGUI(ProgramState programState) {
+        ps = programState;
         pressButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
