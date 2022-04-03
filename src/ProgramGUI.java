@@ -9,6 +9,8 @@ public class ProgramGUI {
     private JPanel rootPanel;
     private JLabel status;
     private JButton pressButton;
+    private JLabel imagePanel;
+    private JLabel indicator;
 
     private ProgramState ps;
     boolean status_on = false;
@@ -18,6 +20,7 @@ public class ProgramGUI {
     private Clip c = null;
 
     public ProgramGUI(ProgramState programState) {
+        indicator.setOpaque(true);
         ps = programState;
         pressButton.addActionListener(new ActionListener() {
             @Override
