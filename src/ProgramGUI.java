@@ -1,5 +1,6 @@
 import javax.sound.sampled.*;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -10,7 +11,7 @@ public class ProgramGUI {
     private JLabel status;
     private JButton pressButton;
     private JLabel imagePanel;
-    private JLabel indicator;
+    private JPanel graph;
 
     private ProgramState ps;
     boolean status_on = false;
@@ -20,7 +21,6 @@ public class ProgramGUI {
     private Clip c = null;
 
     public ProgramGUI(ProgramState programState) {
-        indicator.setOpaque(true);
         ps = programState;
         pressButton.addActionListener(new ActionListener() {
             @Override
@@ -61,5 +61,9 @@ public class ProgramGUI {
 
     public void setButtonEnabled(boolean enable){
         pressButton.setEnabled(enable);
+    }
+
+    private void createUIComponents() {
+        graph = new JGraph();
     }
 }

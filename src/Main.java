@@ -18,7 +18,7 @@ public class Main {
 
         }
         System.out.println("Press detected"); //remove when done
-        gui.setStatusMessage("Relax your lower arm on a horizontal surface. Try not to move your arm.");
-        
+        gui.setStatusMessage("Relax your lower arm on a horizontal surface. Slowly grip and release.");
+
     }
 }
