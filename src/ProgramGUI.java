@@ -64,7 +64,7 @@ public class ProgramGUI extends Thread{
             public void paintComponents(Graphics g) {
                 super.paintComponent(g);
                 double[] data = ps.getCurrentReading().getData();
-                if(data.length < 2){
+                if(data == null || data.length < 2){
                     return;
                 }
                 int margin = 25;
