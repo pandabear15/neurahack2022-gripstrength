@@ -5,6 +5,7 @@ public class Main {
     private static JFrame frame;
     private static ProgramState ps;
     private static ProgramGUI gui;
+    private static BrainFlowMain dataUpdater;
 
     public static final double DATA_COLLECTION_TIME = 10;
 
@@ -13,8 +14,7 @@ public class Main {
         ps = new ProgramState();
         gui = new ProgramGUI(ps);
 
-        BrainFlowMain dataUpdater = new BrainFlowMain(ps);
-        dataUpdater.start();
+        dataUpdater = new BrainFlowMain(ps);
 
         frame.setContentPane(gui.getRootPanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -24,6 +24,7 @@ public class Main {
     }
 
     public static void startDetection(){
+        dataUpdater.start();
         gui.setStatusMessage("<html>Relax your lower arm on a horizontal surface. <br/>Slowly grip and release.</html>");
         //ps.setCurrentReading(new CytonData(new double[]{2, 7, 9, 4}, 3));
         //System.out.println("Check 1");
