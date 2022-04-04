@@ -7,7 +7,7 @@ public class BrainFlowMain extends Thread {
     public static void main(String[] args){
         try {
             Cyton cyton = new Cyton();
-            CytonData data = cyton.streamData(30);
+            CytonData data = cyton.streamData((int)Main.DATA_COLLECTION_TIME);
             cyton.releaseSession();
             System.out.println(Arrays.toString(data.getData()));
 
@@ -25,7 +25,7 @@ public class BrainFlowMain extends Thread {
             // update programState logic code here
             try {
                 Cyton cyton = new Cyton();
-                CytonData data = cyton.streamData(30);
+                CytonData data = cyton.streamData(10);
                 cyton.releaseSession();
                 this.programState.setCurrentReading(data);
                 System.out.println(Arrays.toString(data.getData())); // TODO remove this statement

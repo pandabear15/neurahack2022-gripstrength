@@ -36,7 +36,7 @@ public class Main {
             //System.out.println("\nCheck 2");
             gui.render();
             try {
-                Thread.sleep((int)DATA_COLLECTION_TIME * 10);
+                Thread.sleep((int)DATA_COLLECTION_TIME * 1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
