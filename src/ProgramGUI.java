@@ -3,6 +3,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.io.File;
 import java.io.IOException;
@@ -77,12 +78,19 @@ public class ProgramGUI extends Thread{
                 double deltaX = ((double) width - 2 * margin) / (data.length - 1);
                 double deltaY = ((double) height - 2 * margin) / (maxY - minY);
                 g1.setPaint(Color.blue);
-                for(int i = 1; i < data.length; i++){
-                    double x0 = margin + deltaX * (i - 1);
-                    double y0 = margin + deltaY * (maxY - data[i - 1]);
-                    double x1 = margin + deltaX * i;
-                    double y1 = margin + deltaY * (maxY - data[i]);
-                    g1.draw(new Line2D.Double(x0, y0, x1, y1));
+                //draw lines
+//                for(int i = 1; i < data.length; i++){
+//                    double x0 = margin + deltaX * (i - 1);
+//                    double y0 = margin + deltaY * (maxY - data[i - 1]);
+//                    double x1 = margin + deltaX * i;
+//                    double y1 = margin + deltaY * (maxY - data[i]);
+//                    g1.draw(new Line2D.Double(x0, y0, x1, y1));
+//                }
+                for(int i = 0; i < data.length; i++){
+                    double x = margin + deltaX * i;
+                    double y = margin + deltaY * (maxY - data[i]);
+                    int diameter = 1;
+                    g1.draw(new Ellipse2D.Double(x, y, diameter, diameter));
                 }
             }
         };
