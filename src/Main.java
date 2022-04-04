@@ -6,6 +6,8 @@ public class Main {
     private static ProgramState ps;
     private static ProgramGUI gui;
 
+    public static final double DATA_COLLECTION_TIME = 10;
+
     public static void main(String[] args){
         frame = new JFrame("Grip Strength");
         ps = new ProgramState();
@@ -34,7 +36,7 @@ public class Main {
             //System.out.println("\nCheck 2");
             gui.render();
             try {
-                Thread.sleep(500);
+                Thread.sleep((int)DATA_COLLECTION_TIME * 10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
