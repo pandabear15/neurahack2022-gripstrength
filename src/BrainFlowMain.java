@@ -27,7 +27,7 @@ public class BrainFlowMain extends Thread {
                 Cyton cyton = new Cyton();
                 CytonData data = cyton.streamData(10);
                 cyton.releaseSession();
-                this.programState.setCurrentReading(data);
+                this.programState.setCurrentReading(data.getData());
                 System.out.println(Arrays.toString(data.getData())); // TODO remove this statement
             } catch (Exception e) {
                 System.out.println(e);

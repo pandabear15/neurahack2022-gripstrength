@@ -56,14 +56,14 @@ public class ProgramGUI extends Thread{
     }
 
     public double[] getCurrentData(){
-        return ps.getCurrentReading().getData();
+        return ps.getCurrentReading();
     }
 
     private void createUIComponents() {
         graph = new JPanel() {
             public void paintComponents(Graphics g) {
                 super.paintComponent(g);
-                double[] data = ps.getCurrentReading().getData();
+                double[] data = ps.getCurrentReading();
                 if(data == null || data.length < 2){
                     return;
                 }
@@ -90,7 +90,7 @@ public class ProgramGUI extends Thread{
 
     private double maxValue(){
         double max = Double.MIN_VALUE;
-        for(double d : ps.getCurrentReading().getData()){
+        for(double d : ps.getCurrentReading()){
             max = Math.max(d, max);
         }
         return max;
@@ -98,7 +98,7 @@ public class ProgramGUI extends Thread{
 
     private double minValue(){
         double min = Double.MAX_VALUE;
-        for(double d : ps.getCurrentReading().getData()){
+        for(double d : ps.getCurrentReading()){
             min = Math.min(d, min);
         }
         return min;
