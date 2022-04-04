@@ -16,6 +16,7 @@
           </grid>
         </constraints>
         <properties>
+          <background color="-6906462"/>
           <font name="Maiandra GD" size="36"/>
           <horizontalAlignment value="0"/>
           <horizontalTextPosition value="0"/>
@@ -50,7 +51,9 @@
             <minimum-size width="400" height="400"/>
           </grid>
         </constraints>
-        <properties/>
+        <properties>
+          <background color="-4342339"/>
+        </properties>
         <border type="none"/>
         <children/>
       </grid>
