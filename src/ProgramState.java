@@ -17,7 +17,7 @@ public class ProgramState {
         scanStart = true;
     }
 
-    private CytonData getCurrentReading(){
+    public CytonData getCurrentReading(){
         return currentReading;
     }
 
