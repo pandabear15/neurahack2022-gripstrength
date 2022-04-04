@@ -24,7 +24,12 @@ public class Main {
     public static void startDetection(){
         gui.setStatusMessage("<html>Relax your lower arm on a horizontal surface. <br/>Slowly grip and release.</html>");
         ps.setCurrentReading(new CytonData(new double[]{2, 7, 9, 4}, 3));
-        while(ps.hasScanStarted()){
+        System.out.println("Check 1");
+        while(true){
+            for (double d : gui.getCurrentData()) {
+                System.out.print(d + " ");
+            }
+            System.out.println("\nCheck 2");
             gui.render();
             try {
                 Thread.sleep(500);

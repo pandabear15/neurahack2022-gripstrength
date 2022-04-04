@@ -23,11 +23,13 @@ public class ProgramGUI extends Thread{
 
     public ProgramGUI(ProgramState programState) {
         ps = programState;
+        setButtonMessage("Start");
         graph.setOpaque(true);
         pressButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ps.hasScanStarted();
+                setButtonEnabled(false);
                 Main.startDetection();
             }
         });
@@ -53,26 +55,30 @@ public class ProgramGUI extends Thread{
         graph.paintComponents(graph.getGraphics());
     }
 
+    public double[] getCurrentData(){
+        return ps.getCurrentReading().getData();
+    }
+
     private void createUIComponents() {
         graph = new JPanel() {
             public void paintComponents(Graphics g) {
                 super.paintComponent(g);
                 double[] data = ps.getCurrentReading().getData();
-                int margin = 5;
+                int margin = 25;
                 Graphics2D g1=(Graphics2D)g;
                 g1.setRenderingHint(RenderingHints.KEY_ANTIALIASING,RenderingHints.VALUE_ANTIALIAS_ON);
                 int width = this.getWidth();
                 int height = this.getHeight();
                 double minY = minValue();
                 double maxY = maxValue();
-                double deltaX = ((double) width - 2 * margin) / data.length;
+                double deltaX = ((double) width - 2 * margin) / (data.length - 1);
                 double deltaY = ((double) height - 2 * margin) / (maxY - minY);
                 g1.setPaint(Color.blue);
                 for(int i = 1; i < data.length; i++){
                     double x0 = margin + deltaX * (i - 1);
-                    double y0 = margin + deltaY * (data[i - 1] - minY);
+                    double y0 = margin + deltaY * (maxY - data[i - 1]);
                     double x1 = margin + deltaX * i;
-                    double y1 = margin + deltaY * (data[i] - minY);
+                    double y1 = margin + deltaY * (maxY - data[i]);
                     g1.draw(new Line2D.Double(x0, y0, x1, y1));
                 }
             }
