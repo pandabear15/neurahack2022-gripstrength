@@ -3,16 +3,21 @@
  */
 public class CytonData {
     private double[] data;
-    private double seconds;
+    private double[] times;
+    private int seconds;
 
     /**
      * Constructs an instant of the CytonData class
      * @param data a double[] representing the raw data from the stream
-     * @param seconds a double representing the length of time of the stream
+     * @param seconds an int representing the length of time of the stream
      */
-    public CytonData(double[] data, double seconds) {
+    public CytonData(double[] data, int seconds) {
         this.data = data;
         this.seconds = seconds;
+        this.times = new double[this.data.length];
+        for (int i = 0; i < data.length; i++) {
+            this.times[i] = (double)i * this.seconds / (double)this.data.length;
+        }
     }
 
     /**
@@ -20,7 +25,8 @@ public class CytonData {
      */
     public CytonData() {
         this.data = null;
-        this.seconds = 0.0;
+        this.seconds = 0;
+        this.times = null;
     }
 
     /**
@@ -35,7 +41,15 @@ public class CytonData {
      * Gets the time length of a Cyton session
      * @return double representing length of session
      */
-    public double getSeconds() {
+    public int getSeconds() {
         return this.seconds;
+    }
+
+    /**
+     * Gets the corresponding time of the data
+     * @return a double[] representing the corresponding times of the data
+     */
+    public double[] getTimeArray() {
+        return this.times;
     }
 }
