@@ -26,6 +26,8 @@ public class ProgramState {
 //    }
 
     public void setCurrentReading(double[] reading){
+//        currentReading = TransformRawData.transform(reading);
         currentReading = reading;
+
     }
 }
