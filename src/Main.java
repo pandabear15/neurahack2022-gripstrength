@@ -24,8 +24,8 @@ public class Main {
     }
 
     public static void startDetection(){
-        dataUpdater.start();
         gui.setStatusMessage("<html>Relax your lower arm on a horizontal surface. <br/>Slowly grip and release.</html>");
+        dataUpdater.start();
         //ps.setCurrentReading(new CytonData(new double[]{2, 7, 9, 4}, 3));
         //System.out.println("Check 1");
         while(true){
